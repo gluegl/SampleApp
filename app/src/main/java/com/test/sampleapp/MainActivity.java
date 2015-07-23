@@ -10,6 +10,7 @@ import com.rivetz.stub.Rivet;
 
 public class MainActivity extends AppCompatActivity {
     Rivet rivet;
+    String keyName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +27,14 @@ public class MainActivity extends AppCompatActivity {
         KeyRecord key = rivet.createKey(Rivet.KeyType.ECDSA_DFLT);
         if (key != null) {
             Toast.makeText(this, key.name + " has been created", Toast.LENGTH_LONG).show();
+            keyName = key.name;
         } else {
             Toast.makeText(this, "Error creating key: "+rivet.status, Toast.LENGTH_LONG).show();
         }
     }
 
     public void doSign(View v) {
-        String signature = rivet.sign("mykey","this is a string");
+        String signature = rivet.sign(keyName,"this is a string");
         Toast.makeText(this, signature, Toast.LENGTH_LONG).show();
     }
 }
