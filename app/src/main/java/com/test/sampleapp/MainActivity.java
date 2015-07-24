@@ -5,26 +5,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.rivetz.stub.KeyRecord;
-import com.rivetz.stub.Rivet;
+import com.rivetz.lib.KeyRecord;
+import com.rivetz.lib.RivetAPI;
+import com.rivetz.lib.RivetBase;
+import com.rivetz.sim.SimRivet;
 
 public class MainActivity extends AppCompatActivity {
-    Rivet rivet;
+    RivetBase rivet;
     String keyName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        rivet = new Rivet(this, Rivet.DEVELOPER_SPID);
+//        rivet = new Rivet(this, Rivet.DEVELOPER_SPID);
+        rivet = new SimRivet();
     }
 
     public void doPair(View v) {
-        rivet.pairDevice(this);
+//        rivet.pairDevice(this);
     }
 
     public void doCreateKey(View v) {
-        KeyRecord key = rivet.createKey(Rivet.KeyType.ECDSA_DFLT);
+        KeyRecord key = rivet.createKey(RivetAPI.KeyType.ECDSA_DFLT);
         if (key != null) {
             Toast.makeText(this, key.name + " has been created", Toast.LENGTH_LONG).show();
             keyName = key.name;

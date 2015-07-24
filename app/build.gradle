@@ -27,5 +27,13 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.0'
-    compile "com.rivetz:stub:0.9.1@aar"
+//    compile "com.rivetz:stub:0.9.1@aar"
+    // Replace the stub with simrivet.jar and lib-rivet.jar
+    // currently they must manual be placed in 'libs' directory
+    // Also pull in bitcoinj-core, but not scrypt module which has ARM code
+    // and wont run on x86 simulator
+    compile ('org.bitcoinj:bitcoinj-core:0.13.1') {
+        exclude module: 'scrypt'
+    }
+
 }
