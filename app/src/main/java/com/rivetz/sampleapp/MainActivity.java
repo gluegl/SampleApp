@@ -1,6 +1,6 @@
-package com.test.sampleapp;
+package com.rivetz.sampleapp;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -8,9 +8,9 @@ import android.widget.Toast;
 import com.rivetz.stub.KeyRecord;
 import com.rivetz.stub.Rivet;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     Rivet rivet;
-    String keyName;
+    String keyName = "MyKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +24,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doCreateKey(View v) {
-        KeyRecord key = rivet.createKey(Rivet.KeyType.ECDSA_DFLT);
+        KeyRecord key = rivet.createKey(Rivet.KeyType.ECDSA_DFLT,keyName);
         if (key != null) {
             Toast.makeText(this, key.name + " has been created", Toast.LENGTH_LONG).show();
-            keyName = key.name;
         } else {
             Toast.makeText(this, "Error creating key: "+rivet.status, Toast.LENGTH_LONG).show();
         }
@@ -36,5 +35,10 @@ public class MainActivity extends AppCompatActivity {
     public void doSign(View v) {
         String signature = rivet.sign(keyName,"this is a string");
         Toast.makeText(this, signature, Toast.LENGTH_LONG).show();
+    }
+
+    public void doDelete(View v) {
+        rivet.deleteKey(keyName);
+
     }
 }
