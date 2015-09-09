@@ -1,7 +1,39 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
-/build
-/captures
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# built native files
+*.o
+*.so
+
+# generated files
+bin/
+gen/
+obj/
+app/build/
+build/
+
+# Ignore gradle files
+.gradle/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Mac OS X clutter
+*.DS_Store
+
+# Windows clutter
+Thumbs.db
+
+# Intellij IDEA (don't share IDE project files, ignore them all)
+.idea/
+*.iml
+
+app/src/main/libs
+
