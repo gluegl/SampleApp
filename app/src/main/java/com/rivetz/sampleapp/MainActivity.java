@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.rivetz.stub.KeyRecord;
-import com.rivetz.stub.Rivet;
+import com.rivetz.lib.KeyRecord;
+import com.rivetz.bridge.Rivet;
+import com.rivetz.lib.Utilities;
 
 public class MainActivity extends Activity {
     Rivet rivet;
@@ -33,8 +34,8 @@ public class MainActivity extends Activity {
     }
 
     public void doSign(View v) {
-        String signature = rivet.sign(keyName,"this is a string");
-        Toast.makeText(this, signature, Toast.LENGTH_LONG).show();
+        byte[] signature = rivet.sign(keyName,"this is a string");
+        Toast.makeText(this, Utilities.bytesToHex(signature), Toast.LENGTH_LONG).show();
     }
 
     public void doDelete(View v) {

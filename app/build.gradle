@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 repositories {
-    maven {url "https://code.rivetz.net"}
+    maven {url "http://dl.bintray.com/rivetz/maven"}
 }
 
 android {
@@ -9,7 +9,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.test.sampleapp"
+        applicationId "com.rivetz.sampleapp"
         minSdkVersion 19
         targetSdkVersion 22
         versionCode 1
@@ -26,5 +26,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.0'
-    compile "com.rivetz:stub:0.9.1@aar"
+    compile 'com.rivetz:rivetz-bridge:0.0.6@aar'
+    compile 'com.rivetz:rivetz-lib:0.0.6'
 }
